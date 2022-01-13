@@ -27,12 +27,6 @@ Next, set up the database:
 rails db:setup
 ```
 
-If you want, you can create some seed data in the database:
-
-```
-rails db:seed
-```
-
 Start the app:
 
 ```
