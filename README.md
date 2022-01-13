@@ -6,10 +6,12 @@ made available by members of Community Organizations Active in Disaster.
 
 ## Development
 
-Clone the repository:
+Fork the repository here: 
+https://github.com/ybakos/cs362-coad-resources
 
+Clone the fork:
 ```
-git clone git@github.com:osu-cascades/coad-resources.git
+git clone https://github.com/YOURNAME/cs362-coad-resources
 ```
 
 This is a Rails application that uses SQLite in development and PostgreSQL in production.
