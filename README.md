@@ -21,6 +21,12 @@ gem install bundler
 bundle install
 ```
 
+Set up and configure the .env file:
+
+```
+cp .env.example .env 
+```
+
 Next, set up the database:
 
 ```
