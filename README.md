@@ -6,7 +6,7 @@ made available by members of Community Organizations Active in Disaster.
 
 ## Development
 
-Fork the repository here: 
+Fork the repository: 
 https://github.com/ybakos/cs362-coad-resources
 
 Clone the fork:
