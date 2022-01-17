@@ -23,16 +23,16 @@ gem install bundler
 bundle install
 ```
 
+Set up and configure the .env file:
+
+```
+cp .env.example .env 
+```
+
 Next, set up the database:
 
 ```
 rails db:setup
-```
-
-If you want, you can create some seed data in the database:
-
-```
-rails db:seed
 ```
 
 Start the app:
@@ -110,4 +110,4 @@ Recaptcha
 ![erd](public/documentation/erd.jpg?raw=true)
 
 
-&copy; 2020 Joey Stenbeck, James Martinez, Ryder McDowell. All rights reserved.
+&copy; 2020 Luke Fernandez, James Martinez, Ryder McDowell, Joey Stenbeck. All rights reserved.
