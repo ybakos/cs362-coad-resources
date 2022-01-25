@@ -37,5 +37,6 @@ RSpec.describe Region, type: :model do
       duplicate_region.name = duplicate_name
       expect(duplicate_region).to be_invalid
     end
+  end
 
 end
