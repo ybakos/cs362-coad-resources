@@ -37,6 +37,12 @@ RSpec.describe User, type: :model do
             dupe.email = "r@s.org"
             expect(dupe).to_not be_valid
         end
+
+        it "has a password" do
+            user = User.new(password: "lemonade")
+            expect(user).to respond_to(:email)
+        end
+
     end
 
 end
