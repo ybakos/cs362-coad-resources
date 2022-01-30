@@ -43,6 +43,13 @@ RSpec.describe User, type: :model do
             expect(user).to respond_to(:email)
         end
 
+        it "cannot have a blank password" do
+            user = User.new(email: "r@s.org", password: "lemonade")
+            expect(user).to be_valid
+            user.password = nil
+            expect(user).to_not be_valid
+            expect(user).to validate_presence_of(:password)
+        end
     end
 
 end
