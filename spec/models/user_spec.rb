@@ -22,6 +22,13 @@ RSpec.describe User, type: :model do
             user.email = "9" * 256
             expect(user).to_not be_valid 
         end
+
+        it "must have valid email format" do
+            user = User.new(email: "r@s.org", password: "lemonade")
+            expect(user).to be_valid
+            user.email = "invalid"
+            expect(user).to_not be_valid
+        end
     end
 
 end
