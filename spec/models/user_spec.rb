@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
             expect(user).to respond_to(:email)
         end
 
-        it "cannot have a blank name" do
+        it "cannot have a blank email" do
             user = User.new(email: "r@s.org", password: "lemonade")
             expect(user).to be_valid
             user.email = nil
