@@ -29,6 +29,14 @@ RSpec.describe User, type: :model do
             user.email = "invalid"
             expect(user).to_not be_valid
         end
+
+        it "must have a unique email" do
+            user = User.create!(email: "r@s.org", password: "lemonade")
+            dupe = User.new(email: "rdupe@s.org", password: "lemonade")
+            expect(dupe).to be_valid
+            dupe.email = "r@s.org"
+            expect(dupe).to_not be_valid
+        end
     end
 
 end
