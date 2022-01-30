@@ -50,6 +50,14 @@ RSpec.describe User, type: :model do
             expect(user).to_not be_valid
             expect(user).to validate_presence_of(:password)
         end
-    end
+        
+        it "cannot have an password length longer than 255" do
+            user = User.new(email: "r@s.org", password: "lemonade")
+            expect(user).to be_valid
+            user.password = "9" * 256
+            expect(user).to_not be_valid 
+        end
+
+   end
 
 end
