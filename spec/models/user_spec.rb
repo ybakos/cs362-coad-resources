@@ -10,6 +10,8 @@ RSpec.describe User, type: :model do
 
         it "returns the user's email when to_s is invoked" do
             expect(user.to_s).to eql(user.email)
+            user.email = "turtle@oceanplastic.com"
+            expect(user.to_s).to eql("turtle@oceanplastic.com")
         end
     end
     
