@@ -50,5 +50,18 @@ RSpec.describe Ticket, type: :model do
             ticket.name = "9" * 256
             expect(ticket).to_not be_valid
         end
+        
+        it "has a valid phone number" do
+            region = Region.create!(name: "42")
+            resource_category = ResourceCategory.create!(name: "rc")
+            ticket.name = "valid"
+            ticket.phone = "+15417977899"
+            ticket.region_id = region.id 
+            ticket.resource_category_id = resource_category.id 
+            expect(ticket).to be_valid
+            ticket.phone = "101" 
+            expect(ticket).to_not be_valid
+        end
+
     end
 end
