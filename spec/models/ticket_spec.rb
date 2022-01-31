@@ -26,7 +26,7 @@ RSpec.describe Ticket, type: :model do
             expect(ticket.captured?).to eq(false)
         end
 
-        it "returns ticket and its number as a string when to_s is invoked" do
+        it "has a string representation of ticket and its id" do
             expect(ticket.to_s).to eq("Ticket ")
             ticket.id = 14
             expect(ticket.to_s).to eq("Ticket 14")
