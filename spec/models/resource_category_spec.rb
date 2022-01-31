@@ -36,6 +36,12 @@ RSpec.describe ResourceCategory, type: :model do
             expect(resource_category.inactive?).to eq(false)
         end
 
+        it "returns name of resource category when to_s is invoked" do
+            expect(resource_category.to_s).to_not be('Snow Removal')
+            resource_category.name = 'Snow Removal'
+            expect(resource_category.to_s).to eq('Snow Removal')
+        end
+
     end
 
 end
