@@ -2,6 +2,19 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+    describe "methods" do
+        let (:user) { User.new }
+        it "sets default role to an organization" do
+            expect(user.role).to eql("organization")
+        end
+
+        it "returns the user's email when to_s is invoked" do
+            expect(user.to_s).to eql(user.email)
+            user.email = "turtle@oceanplastic.com"
+            expect(user.to_s).to eql("turtle@oceanplastic.com")
+        end
+    end
+    
     describe "validations" do
         it "has an email" do
             user = User.new(email: "r@s.org")
@@ -57,5 +70,5 @@ RSpec.describe User, type: :model do
             user.password = "9" * 256
             expect(user).to_not be_valid 
         end
-   end
+    end
 end
