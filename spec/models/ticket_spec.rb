@@ -14,5 +14,16 @@ RSpec.describe Ticket, type: :model do
             ticket.closed = false
             expect(ticket.open?).to eq(true)
         end
+
+        it "returns true from the captured? method if organization is set" do
+            expect(ticket.captured?).to eq(false)
+            global_penguin_society = Organization.new
+            ticket.organization = global_penguin_society
+            expect(ticket.captured?).to eq(true)
+        end
+
+        it "returns false from the captured? method if organization is not set" do
+            expect(ticket.captured?).to eq(false)
+        end
     end
 end
