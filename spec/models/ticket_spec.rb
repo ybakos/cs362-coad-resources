@@ -24,6 +24,31 @@ RSpec.describe Ticket, type: :model do
             ticket.resource_category_id = 7  
             expect(ticket).to respond_to(:resource_category_id)
         end
+        
+        it "cannot have a blank name" do
+            region = Region.create!(name: "42")
+            resource_category = ResourceCategory.create!(name: "rc")
+            ticket.name = "valid"
+            ticket.phone = "+15417977899"
+            ticket.description = "345820"
+            ticket.region_id = region.id
+            ticket.resource_category_id = resource_category.id
+            expect(ticket).to be_valid
+            ticket.name = nil
+            expect(ticket).to_not be_valid
+            expect(ticket).to validate_presence_of(:name)
+        end
+    
+        it "cannot have a length longer than 255" do
+            region = Region.create!(name: "42")
+            resource_category = ResourceCategory.create!(name: "rc")
+            ticket.name = "valid"
+            ticket.phone = "+15417977899"
+            ticket.region_id = region.id 
+            ticket.resource_category_id = resource_category.id 
+            expect(ticket).to be_valid
+            ticket.name = "9" * 256
+            expect(ticket).to_not be_valid
+        end
     end
-
 end
