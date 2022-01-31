@@ -25,5 +25,11 @@ RSpec.describe Ticket, type: :model do
         it "returns false from the captured? method if organization is not set" do
             expect(ticket.captured?).to eq(false)
         end
+
+        it "returns ticket and its number as a string when to_s is invoked" do
+            expect(ticket.to_s).to eq("Ticket ")
+            ticket.id = 14
+            expect(ticket.to_s).to eq("Ticket 14")
+        end
     end
 end
