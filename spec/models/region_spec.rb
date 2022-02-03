@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Region, type: :model do
+
+  let(:region) { build(:region) }
+
+  it "exists" do
+    expect(region).to_not eq(nil)
+  end
+
     describe 'methods' do
         it 'returns its name from to_s' do
             region = Region.new
@@ -15,10 +22,6 @@ RSpec.describe Region, type: :model do
         end
     end
 
-    it "exists" do
-        Region.new
-    end
-    
     describe "attributes" do
         it "has a name" do
           region = Region.new
