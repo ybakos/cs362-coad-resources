@@ -27,7 +27,6 @@ RSpec.describe Region, type: :model do
   
   describe "validations" do
       it "cannot have a blank name" do
-        region = Region.new(name: 'Fake Region')
         expect(region).to be_valid
         region.name = nil
         expect(region).to_not be_valid
