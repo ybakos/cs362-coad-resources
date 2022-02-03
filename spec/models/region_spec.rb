@@ -34,7 +34,6 @@ RSpec.describe Region, type: :model do
       end
   
       it "cannot have a length longer than 255" do
-        region = Region.new(name: 'Valid-Length Region')
         expect(region).to be_valid
         region.name = "9" * 256
         expect(region).to_not be_valid
