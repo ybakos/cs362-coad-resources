@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Organization, type: :model do
 
   let(:organization) { build(:organization) }
-
+ 
   describe "attributes" do
     it "has agreement_one" do
       expect(organization).to respond_to(:agreement_one)
@@ -31,6 +31,40 @@ RSpec.describe Organization, type: :model do
     end
   end
 
-
+  describe "methods" do
+    it "has a status that can be changed to approved" do
+      expect(organization.status.to_s).to_not eq(:approved.to_s)
+      organization.approve
+      expect(organization.status.to_s).to eq(:approved.to_s)
+    end
+    it "has a status that can be changed to rejected" do
+      expect(organization.status.to_s).to_not eq(:rejected.to_s)
+      organization.reject
+      expect(organization.status.to_s).to eq(:rejected.to_s)
+    end
+    describe "set_default_status" do
+      it "can change a nil status to a submitted status" do
+        organization.status = nil
+        organization.set_default_status
+        expect(organization.status.to_s).to eq(:submitted.to_s)
+      end
+      it "can change a false status to a submitted status" do
+        organization.status = false 
+        organization.set_default_status
+        expect(organization.status.to_s).to eq(:submitted.to_s)
+      end
+      it "can not change an existing status" do
+        status = :approved
+        organization.status = status
+        organization.set_default_status
+        expect(organization.status.to_s).to eq(status.to_s)
+      end
+    end
+    it "has a string representation of its name" do
+      name = "Bleh"
+      organization.name = name
+      expect(organization.to_s).to eq(name)
+    end
+  end
 
 end
