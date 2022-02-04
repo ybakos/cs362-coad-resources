@@ -60,6 +60,11 @@ RSpec.describe Organization, type: :model do
         expect(organization.status.to_s).to eq(status.to_s)
       end
     end
+    it "has a string representation of its name" do
+      name = "Bleh"
+      organization.name = name
+      expect(organization.to_s).to eq(name)
+    end
   end
 
 end
