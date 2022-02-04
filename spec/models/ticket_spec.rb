@@ -35,7 +35,7 @@ RSpec.describe Ticket, type: :model do
   end
   
   describe "validations" do
-    let(:ticket) { Ticket.new }
+    let(:ticket) { build(:ticket) }
 
     it "has a name" do
       ticket.name = "chip"
