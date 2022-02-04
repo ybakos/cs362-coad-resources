@@ -43,11 +43,6 @@ RSpec.describe Organization, type: :model do
       expect(organization.status.to_s).to eq(:rejected.to_s)
     end
     describe "set_default_status" do
-      it "can change an undefined status to a submitted status" do
-        #organization.status = undefined
-        organization.set_default_status
-        expect(organization.status.to_s).to eq(:submitted.to_s)
-      end
       it "can change a nil status to a submitted status" do
         organization.status = nil
         organization.set_default_status
