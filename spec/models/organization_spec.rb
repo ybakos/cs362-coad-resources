@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Organization, type: :model do
 
   let(:organization) { build(:organization) }
-
+ 
   describe "attributes" do
     it "has agreement_one" do
       expect(organization).to respond_to(:agreement_one)
@@ -31,6 +31,13 @@ RSpec.describe Organization, type: :model do
     end
   end
 
-
+  describe "methods" do
+    it "has a status that can be approved" do
+      organization.status = :locked
+      expect(organization.status.to_s).to_not eq(:approved.to_s)
+      organization.approve
+      expect(organization.status.to_s).to eq(:approved.to_s)
+    end
+  end
 
 end
