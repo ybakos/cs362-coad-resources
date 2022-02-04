@@ -48,5 +48,4 @@ RSpec.describe Region, type: :model do
       expect(duplicate_region).to be_invalid
     end
   end
-
 end
