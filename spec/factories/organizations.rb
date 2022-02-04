@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :organizations do
+  factory :organization do
     name { 'Fake Organization' },
     email { 'FakeEmail@FakeEmail.com' },
     phone { '+15413215678' },
