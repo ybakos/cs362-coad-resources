@@ -40,9 +40,9 @@ RSpec.describe Region, type: :model do
     end
   
     it "must have a unique name" do
-      #region = Region.create!(name: duplicate_name)
-      #duplicate_region = Region.new(name: 'Unique Name')
       duplicate_region = build(:region, name: 'Unique Name')
+      duplicate_region.save
+      region.save
       expect(duplicate_region).to be_valid
       duplicate_region.name = region.name 
       expect(duplicate_region).to be_invalid
