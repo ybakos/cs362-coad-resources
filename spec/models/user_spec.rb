@@ -17,31 +17,29 @@ RSpec.describe User, type: :model do
   end
   
   describe "validations" do
+    let (:complete_user) { User.new(email: "r@s.org", password: "lemonade")}
+    
     it "has an email" do
-      user = User.new(email: "r@s.org")
-      expect(user).to respond_to(:email)
+      expect(complete_user).to respond_to(:email)
     end
 
     it "cannot have a blank email" do
-      user = User.new(email: "r@s.org", password: "lemonade")
-      expect(user).to be_valid
-      user.email = nil
-      expect(user).to_not be_valid
-      expect(user).to validate_presence_of(:email)
+      expect(complete_user).to be_valid
+      complete_user.email = nil
+      expect(complete_user).to_not be_valid
+      expect(complete_user).to validate_presence_of(:email)
     end
 
     it "cannot have an email length longer than 255" do
-      user = User.new(email: "r@s.org", password: "lemonade")
-      expect(user).to be_valid
-      user.email = "9" * 246 + "@gmail.com"
-      expect(user).to_not be_valid 
+      expect(complete_user).to be_valid
+      complete_user.email = "9" * 246 + "@gmail.com"
+      expect(complete_user).to_not be_valid 
     end
 
     it "must have valid email format" do
-      user = User.new(email: "r@s.org", password: "lemonade")
-      expect(user).to be_valid
-      user.email = "invalid"
-      expect(user).to_not be_valid
+      expect(complete_user).to be_valid
+      complete_user.email = "invalid"
+      expect(complete_user).to_not be_valid
     end
 
     it "must have a unique email" do
@@ -58,18 +56,16 @@ RSpec.describe User, type: :model do
     end
 
     it "cannot have a blank password" do
-      user = User.new(email: "r@s.org", password: "lemonade")
-      expect(user).to be_valid
-      user.password = nil
-      expect(user).to_not be_valid
-      expect(user).to validate_presence_of(:password)
+      expect(complete_user).to be_valid
+      complete_user.password = nil
+      expect(complete_user).to_not be_valid
+      expect(complete_user).to validate_presence_of(:password)
     end
     
     it "cannot have an password length longer than 255" do
-      user = User.new(email: "r@s.org", password: "lemonade")
-      expect(user).to be_valid
-      user.password = "9" * 256
-      expect(user).to_not be_valid 
+      expect(complete_user).to be_valid
+      complete_user.password = "9" * 256
+      expect(complete_user).to_not be_valid 
     end
   end
 end
