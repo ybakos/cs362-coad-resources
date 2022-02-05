@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
     describe "methods" do
-        let (:user) { User.new }
+        let (:user) { FactoryBot.build(:user) }
+
         it "sets default role to an organization" do
             expect(user.role).to eql("organization")
         end
