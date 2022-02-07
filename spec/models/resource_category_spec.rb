@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
   describe "methods" do
-    let (:resource_category) { ResourceCategory.new }
+    let (:resource_category) { build(:resource_category) }
+    let (:active_resource) { build(:active_resource) }
+    let (:inactive_resource) {build(:inactive_resource) }
 
     it "returns ResourceCategory object with name as Unspecified" do
       resource_category = ResourceCategory.unspecified
@@ -10,25 +12,27 @@ RSpec.describe ResourceCategory, type: :model do
     end
 
     it "sets active attribute to true when activate method is invoked" do
-      resource_category.active = false
-      resource_category.activate
-      expect(resource_category.active).to eq(true)
+      expect(inactive_resource.active).to eq(false)
+      inactive_resource.activate
+      expect(inactive_resource.active).to eq(true)
     end
 
     it "sets active attribute to false when deactivate method is invoked" do
-      resource_category.active = true
-      resource_category.deactivate
-      expect(resource_category.active).to eq(false)
+      expect(active_resource.active).to eq(true)
+      active_resource.deactivate
+      expect(active_resource.active).to eq(false)
     end
 
     it "returns true for inactive? method if not active" do
-      resource_category.active = false
-      expect(resource_category.inactive?).to eq(true)
+      expect(active_resource.inactive?).to eq(false)
+      active_resource.active = false
+      expect(active_resource.inactive?).to eq(true)
     end
 
     it "returns false for inactive? method if active" do
-      resource_category.active = true
-      expect(resource_category.inactive?).to eq(false)
+      expect(inactive_resource.inactive?).to eq(true)
+      inactive_resource.active = true
+      expect(inactive_resource.inactive?).to eq(false)
     end
 
     it "returns name of resource category when to_s is invoked" do
