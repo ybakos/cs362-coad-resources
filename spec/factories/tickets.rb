@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :ticket do
     name { 'Fake Ticket' }
+    description { 'Fake ticket description' }
     phone { '+15412345678' }
-    region_id { 1 }
-    resource_category_id { 1 }
+    closed { false }
+    region
+    resource_category
   end
 end
