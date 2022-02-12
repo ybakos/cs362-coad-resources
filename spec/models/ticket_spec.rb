@@ -61,12 +61,20 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe "scopes" do
-    it "can open" do
+    it "open" do
       open_ticket = create(:open_ticket)
       closed_ticket = create(:closed_ticket)
       results = Ticket.open
       expect(results).to include(open_ticket)
       expect(results).to_not include(closed_ticket)
+    end
+
+    it "closed" do
+      open_ticket = create(:open_ticket)
+      closed_ticket = create(:closed_ticket)
+      results = Ticket.closed
+      expect(results).to include(closed_ticket)
+      expect(results).to_not include(open_ticket) 
     end
   end
 end
