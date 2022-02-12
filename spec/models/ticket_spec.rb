@@ -41,7 +41,7 @@ RSpec.describe Ticket, type: :model do
     it { should validate_presence_of(:phone) }
     it { should validate_presence_of(:region_id) }
     it { should validate_presence_of(:resource_category_id) }
-
+    
     it "cannot have a blank name" do
       region = Region.create!(name: "42")
       resource_category = ResourceCategory.create!(name: "rc")
@@ -56,17 +56,7 @@ RSpec.describe Ticket, type: :model do
       expect(ticket).to validate_presence_of(:name)
     end
 
-    it "cannot have a length longer than 255" do
-      region = Region.create!(name: "42")
-      resource_category = ResourceCategory.create!(name: "rc")
-      ticket.name = "valid"
-      ticket.phone = "+15417977899"
-      ticket.region_id = region.id 
-      ticket.resource_category_id = resource_category.id 
-      expect(ticket).to be_valid
-      ticket.name = "9" * 256
-      expect(ticket).to_not be_valid
-    end
+    it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
       
     it "has a valid phone number" do
       region = Region.create!(name: "42")
