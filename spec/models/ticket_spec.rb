@@ -42,20 +42,6 @@ RSpec.describe Ticket, type: :model do
     it { should validate_presence_of(:region_id) }
     it { should validate_presence_of(:resource_category_id) }
     
-    it "cannot have a blank name" do
-      region = Region.create!(name: "42")
-      resource_category = ResourceCategory.create!(name: "rc")
-      ticket.name = "valid"
-      ticket.phone = "+15417977899"
-      ticket.description = "345820"
-      ticket.region_id = region.id
-      ticket.resource_category_id = resource_category.id
-      expect(ticket).to be_valid
-      ticket.name = nil
-      expect(ticket).to_not be_valid
-      expect(ticket).to validate_presence_of(:name)
-    end
-
     it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
       
     it "has a valid phone number" do
