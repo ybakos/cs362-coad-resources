@@ -102,5 +102,14 @@ RSpec.describe Ticket, type: :model do
       expect(results).to include(closed_claimed_ticket)
       expect(results).to_not include(different_id_closed_claimed_ticket)
     end
+
+    it "region" do
+      ticket_in_region = create(:ticket)
+      ticket_in_different_region = create(:ticket)
+      region = ticket_in_region.region_id
+      results = Ticket.region(region)
+      expect(results).to include(ticket_in_region)
+      expect(results).to_not include(ticket_in_different_region)
+    end
   end
 end
