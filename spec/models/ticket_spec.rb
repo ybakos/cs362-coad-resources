@@ -49,4 +49,9 @@ RSpec.describe Ticket, type: :model do
       expect(ticket).to_not be_valid
     end
   end
+  
+  describe "associations" do
+    it { should belong_to(:region) }
+    it { should belong_to(:resource_category) }
+  end
 end
