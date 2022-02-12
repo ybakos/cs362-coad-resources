@@ -111,5 +111,14 @@ RSpec.describe Ticket, type: :model do
       expect(results).to include(ticket_in_region)
       expect(results).to_not include(ticket_in_different_region)
     end
+
+    it "resource_category" do
+      ticket_in_res_category = create(:ticket)
+      ticket_in_dif_res_category = create(:ticket)
+      res_category_id = ticket_in_res_category.resource_category_id
+      results = Ticket.resource_category(res_category_id)
+      expect(results).to include(ticket_in_res_category)
+      expect(results).to_not include(ticket_in_dif_res_category)
+    end
   end
 end
