@@ -45,7 +45,12 @@ RSpec.describe Ticket, type: :model do
     it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
 
     it "has a valid phone number" do
-      ticket.phone = "101" 
+      ticket.phone = '+13215557890'
+      expect(ticket).to be_valid
+    end
+
+    it "has an invalid phone number" do
+      ticket.phone = "123"
       expect(ticket).to_not be_valid
     end
   end
