@@ -37,26 +37,11 @@ RSpec.describe Ticket, type: :model do
   describe "validations" do
     let(:ticket) { build(:ticket) }
 
-    it "has a name" do
-      ticket.name = "chip"
-      expect(ticket).to respond_to(:name)
-    end
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_presence_of(:region_id) }
+    it { should validate_presence_of(:resource_category_id) }
 
-    it "has a phone number" do
-      ticket.phone = "3214201337"
-      expect(ticket).to respond_to(:phone)
-    end
-
-    it "has a region id" do
-      ticket.region_id = 42 
-      expect(ticket).to respond_to(:region_id)
-    end
-
-    it "has a resource_category_id" do
-      ticket.resource_category_id = 7  
-      expect(ticket).to respond_to(:resource_category_id)
-    end
-    
     it "cannot have a blank name" do
       region = Region.create!(name: "42")
       resource_category = ResourceCategory.create!(name: "rc")
