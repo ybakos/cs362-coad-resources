@@ -59,4 +59,14 @@ RSpec.describe Ticket, type: :model do
     it { should belong_to(:region) }
     it { should belong_to(:resource_category) }
   end
+
+  describe "scopes" do
+    it "can open" do
+      open_ticket = create(:open_ticket)
+      closed_ticket = create(:closed_ticket)
+      results = Ticket.open
+      expect(results).to include(open_ticket)
+      expect(results).to_not include(closed_ticket)
+    end
+  end
 end
