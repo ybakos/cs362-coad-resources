@@ -9,7 +9,16 @@ FactoryBot.define do
 
     factory :open_ticket do
       closed { false }
+      
+      factory :open_unclaimed_ticket do
+        organization_id { nil }
+      end
+      
+      factory :open_claimed_ticket do
+        organization
+      end
     end
+
     factory :closed_ticket do
       closed { true }
     end

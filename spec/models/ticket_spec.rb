@@ -76,5 +76,13 @@ RSpec.describe Ticket, type: :model do
       expect(results).to include(closed_ticket)
       expect(results).to_not include(open_ticket) 
     end
+
+    it "all_organization" do
+      open_unclaimed_ticket = create(:open_unclaimed_ticket)
+      open_claimed_ticket = create(:open_claimed_ticket)
+      results = Ticket.all_organization
+      expect(results).to include(open_claimed_ticket)
+      expect(results).to_not include(open_unclaimed_ticket)
+    end
   end
 end
