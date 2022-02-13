@@ -59,4 +59,66 @@ RSpec.describe Ticket, type: :model do
     it { should belong_to(:region) }
     it { should belong_to(:resource_category) }
   end
+
+  describe "scopes" do
+    it "open" do
+      open_ticket = create(:open_ticket)
+      closed_ticket = create(:closed_ticket)
+      results = Ticket.open
+      expect(results).to include(open_ticket)
+      expect(results).to_not include(closed_ticket)
+    end
+
+    it "closed" do
+      open_ticket = create(:open_ticket)
+      closed_ticket = create(:closed_ticket)
+      results = Ticket.closed
+      expect(results).to include(closed_ticket)
+      expect(results).to_not include(open_ticket) 
+    end
+
+    it "all_organization" do
+      open_unclaimed_ticket = create(:open_unclaimed_ticket)
+      open_claimed_ticket = create(:open_claimed_ticket)
+      results = Ticket.all_organization
+      expect(results).to include(open_claimed_ticket)
+      expect(results).to_not include(open_unclaimed_ticket)
+    end
+
+    it "organization" do
+      open_claimed_ticket = create(:open_claimed_ticket)
+      different_id_open_claimed_ticket = create(:open_claimed_ticket)
+      valid_id = open_claimed_ticket.organization_id
+      results = Ticket.organization(valid_id)
+      expect(results).to include(open_claimed_ticket)
+      expect(results).to_not include(different_id_open_claimed_ticket)
+    end
+
+    it "closed_organization" do
+      closed_claimed_ticket = create(:closed_claimed_ticket)
+      different_id_closed_claimed_ticket = create(:closed_claimed_ticket)
+      valid_id = closed_claimed_ticket.organization_id
+      results = Ticket.closed_organization(valid_id)
+      expect(results).to include(closed_claimed_ticket)
+      expect(results).to_not include(different_id_closed_claimed_ticket)
+    end
+
+    it "region" do
+      ticket_in_region = create(:ticket)
+      ticket_in_different_region = create(:ticket)
+      region = ticket_in_region.region_id
+      results = Ticket.region(region)
+      expect(results).to include(ticket_in_region)
+      expect(results).to_not include(ticket_in_different_region)
+    end
+
+    it "resource_category" do
+      ticket_in_res_category = create(:ticket)
+      ticket_in_dif_res_category = create(:ticket)
+      res_category_id = ticket_in_res_category.resource_category_id
+      results = Ticket.resource_category(res_category_id)
+      expect(results).to include(ticket_in_res_category)
+      expect(results).to_not include(ticket_in_dif_res_category)
+    end
+  end
 end

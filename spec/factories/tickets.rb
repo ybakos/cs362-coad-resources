@@ -6,5 +6,30 @@ FactoryBot.define do
     closed { false }
     region
     resource_category
+
+    factory :open_ticket do
+      closed { false }
+      
+      factory :open_unclaimed_ticket do
+        organization_id { nil }
+      end
+      
+      factory :open_claimed_ticket do
+        organization
+      end
+    end
+
+    factory :closed_ticket do
+      closed { true }
+
+      factory :closed_unclaimed_ticket do
+        organization_id { nil }
+      end
+      
+      factory :closed_claimed_ticket do
+        organization
+      end
+    end
   end
+
 end
