@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
   describe "methods" do
-    let (:ticket) { Ticket.new }
-    
+    let (:ticket) { build(:ticket) }
+
     it "returns false from the open? method if :closed is true" do
       ticket.closed = true
       expect(ticket.open?).to eq(false)
@@ -35,64 +35,28 @@ RSpec.describe Ticket, type: :model do
   end
   
   describe "validations" do
-    let(:ticket) { Ticket.new }
+    let(:ticket) { create(:ticket) }
 
-    it "has a name" do
-      ticket.name = "chip"
-      expect(ticket).to respond_to(:name)
-    end
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_presence_of(:region_id) }
+    it { should validate_presence_of(:resource_category_id) }
 
-    it "has a phone number" do
-      ticket.phone = "3214201337"
-      expect(ticket).to respond_to(:phone)
-    end
+    it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
 
-    it "has a region id" do
-      ticket.region_id = 42 
-      expect(ticket).to respond_to(:region_id)
-    end
-
-    it "has a resource_category_id" do
-      ticket.resource_category_id = 7  
-      expect(ticket).to respond_to(:resource_category_id)
-    end
-    
-    it "cannot have a blank name" do
-      region = Region.create!(name: "42")
-      resource_category = ResourceCategory.create!(name: "rc")
-      ticket.name = "valid"
-      ticket.phone = "+15417977899"
-      ticket.description = "345820"
-      ticket.region_id = region.id
-      ticket.resource_category_id = resource_category.id
-      expect(ticket).to be_valid
-      ticket.name = nil
-      expect(ticket).to_not be_valid
-      expect(ticket).to validate_presence_of(:name)
-    end
-
-    it "cannot have a length longer than 255" do
-      region = Region.create!(name: "42")
-      resource_category = ResourceCategory.create!(name: "rc")
-      ticket.name = "valid"
-      ticket.phone = "+15417977899"
-      ticket.region_id = region.id 
-      ticket.resource_category_id = resource_category.id 
-      expect(ticket).to be_valid
-      ticket.name = "9" * 256
-      expect(ticket).to_not be_valid
-    end
-      
     it "has a valid phone number" do
-      region = Region.create!(name: "42")
-      resource_category = ResourceCategory.create!(name: "rc")
-      ticket.name = "valid"
-      ticket.phone = "+15417977899"
-      ticket.region_id = region.id 
-      ticket.resource_category_id = resource_category.id 
+      ticket.phone = '+13215557890'
       expect(ticket).to be_valid
-      ticket.phone = "101" 
+    end
+
+    it "has an invalid phone number" do
+      ticket.phone = "123"
       expect(ticket).to_not be_valid
     end
+  end
+  
+  describe "associations" do
+    it { should belong_to(:region) }
+    it { should belong_to(:resource_category) }
   end
 end
