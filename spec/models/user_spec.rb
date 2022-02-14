@@ -15,6 +15,10 @@ RSpec.describe User, type: :model do
       expect(user.to_s).to eql("turtle@oceanplastic.com")
     end
   end
+
+  describe "associations" do
+    it { should belong_to(:organization) }
+  end
   
   describe "validations" do
     let (:complete_user) { User.new(email: "r@s.org", password: "lemonade")}
