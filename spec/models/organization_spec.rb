@@ -4,6 +4,12 @@ RSpec.describe Organization, type: :model do
 
   let(:organization) { build(:organization) }
  
+  describe "associations" do
+    it { should have_many(:users) }
+    it { should have_many(:tickets) }
+    it { should have_and_belong_to_many(:resource_categories) }
+  end
+
   describe "attributes" do
     it "has agreement_one" do
       expect(organization).to respond_to(:agreement_one)
