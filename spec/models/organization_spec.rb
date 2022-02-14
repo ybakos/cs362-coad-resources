@@ -25,6 +25,12 @@ RSpec.describe Organization, type: :model do
 
     it { should validate_uniqueness_of(:email).case_insensitive }
     it { should validate_uniqueness_of(:name).case_insensitive }
+
+    it "must have valid email format" do
+      expect(organization).to be_valid
+      organization.email = "invalid"
+      expect(organization).to_not be_valid
+    end
   end
 
   describe "attributes" do
