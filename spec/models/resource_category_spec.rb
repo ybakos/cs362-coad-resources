@@ -57,6 +57,11 @@ RSpec.describe ResourceCategory, type: :model do
     end
 
     it "inactive" do
+      active_res_cat = create(:active_resource)
+      inactive_res_cat = create(:inactive_resource)
+      results = ResourceCategory.inactive
+      expect(results).to include(inactive_res_cat)
+      expect(results).to_not include(active_res_cat)
     end
   end
 
