@@ -47,6 +47,24 @@ RSpec.describe ResourceCategory, type: :model do
     it { should have_many(:tickets) }
   end
 
+  describe "scopes" do
+    it "active" do
+      active_res_cat = create(:active_resource)
+      inactive_res_cat = create(:inactive_resource)
+      results = ResourceCategory.active
+      expect(results).to include(active_res_cat)
+      expect(results).to_not include(inactive_res_cat)
+    end
+
+    it "inactive" do
+      active_res_cat = create(:active_resource)
+      inactive_res_cat = create(:inactive_resource)
+      results = ResourceCategory.inactive
+      expect(results).to include(inactive_res_cat)
+      expect(results).to_not include(active_res_cat)
+    end
+  end
+
   describe "validations" do 
     let (:resource_category) { ResourceCategory.new }
     
