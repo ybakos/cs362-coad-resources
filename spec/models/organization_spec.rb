@@ -10,6 +10,29 @@ RSpec.describe Organization, type: :model do
     it { should have_and_belong_to_many(:resource_categories) }
   end
 
+  describe "validations" do
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_presence_of(:status) }
+    it { should validate_presence_of(:primary_name) }
+    it { should validate_presence_of(:secondary_name) }
+    it { should validate_presence_of(:secondary_phone) }
+    
+    it { should validate_length_of(:email).is_at_least(1).is_at_most(255) }
+    it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
+    it { should validate_length_of(:description).is_at_most(1020) }
+
+    it { should validate_uniqueness_of(:email).case_insensitive }
+    it { should validate_uniqueness_of(:name).case_insensitive }
+
+    it "must have valid email format" do
+      expect(organization).to be_valid
+      organization.email = "invalid"
+      expect(organization).to_not be_valid
+    end
+  end
+
   describe "attributes" do
     it "has agreement_one" do
       expect(organization).to respond_to(:agreement_one)
