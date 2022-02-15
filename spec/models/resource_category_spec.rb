@@ -42,6 +42,11 @@ RSpec.describe ResourceCategory, type: :model do
     end
   end
 
+  describe "associations" do
+    it { should have_and_belong_to_many(:organizations) }
+    it { should have_many(:tickets) }
+  end
+
   describe "validations" do 
     let (:resource_category) { ResourceCategory.new }
     
