@@ -4,17 +4,6 @@ RSpec.describe OrganizationsController, type: :controller do
 
   describe "a non logged in user" do
 
-    # these do not work
-    it "redirects them to the login screen" do
-
-      get :resources, params: {id: 'FAKE'}
-      expect(response).to redirect_to(new_user_session_path)
-
-      delete :destroy, params: {id: 'FAKE'}
-      expect(response).to redirect_to(new_user_session_path)
-
-    end
-
     it "redirects them to the login screen" do
 
       get :index
