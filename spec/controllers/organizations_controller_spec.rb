@@ -34,12 +34,19 @@ RSpec.describe OrganizationsController, type: :controller do
 
   describe "a logged-in, non-admin user" do
 
-    it "redirects user with organization to dashboard" do
+    let(:user) { create(:user_with_organization) }
 
-      user = create(:user_with_organization)
+    before do
       user.confirm
       sign_in(user)
+      user.organization.approve
+    end
+
+    it "redirects user with organization to dashboard" do
+
       get :new
+      expect(response).to redirect_to(dashboard_path)
+      get :create
       expect(response).to redirect_to(dashboard_path)
 
     end
