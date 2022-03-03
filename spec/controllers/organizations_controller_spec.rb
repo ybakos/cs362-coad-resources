@@ -49,6 +49,12 @@ RSpec.describe OrganizationsController, type: :controller do
       get :create
       expect(response).to redirect_to(dashboard_path)
 
+      post :approve, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
+      post :reject, params: {id: 'FAKE'}
+      expect(response).to redirect_to(dashboard_path)
+
+
     end
 
   end
