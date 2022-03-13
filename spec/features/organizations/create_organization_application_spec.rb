@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe 'Creating an Organization Application', type: :feature do
 
   let(:user) { create(:user) }
+  let(:admin) { create(:admin) }
 
   before do
+    admin.confirm
     user.confirm
     log_in_as(user)
   end
