@@ -1,3 +1,7 @@
+#represents users organization
+#validates information and modifies the status to either approves or denies 
+#if approved it allows you to log in if rejected you are not allowed to
+
 class Organization < ApplicationRecord
 
   attr_accessor :agreement_one, :agreement_two, :agreement_three, :agreement_four, :agreement_five, :agreement_six, :agreement_seven, :agreement_eight

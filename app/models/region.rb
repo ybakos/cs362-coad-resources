@@ -1,3 +1,5 @@
+#represents the data of a specific region
+
 class Region < ApplicationRecord
 
   has_many :tickets

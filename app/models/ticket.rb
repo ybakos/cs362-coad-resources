@@ -1,3 +1,5 @@
+#keeps track of a users information
+
 class Ticket < ApplicationRecord
 
   belongs_to :region

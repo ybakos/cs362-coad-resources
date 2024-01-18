@@ -1,3 +1,5 @@
+#represents the type of resource provided by the ticket
+
 class ResourceCategory < ApplicationRecord
 
   has_and_belongs_to_many :organizations
