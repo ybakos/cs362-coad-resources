@@ -1,3 +1,5 @@
+#validates informaiton and modifies the status to either approves or denies 
+#if aproved it allows you to log in if rejected you are not allowed to  
 class Organization < ApplicationRecord
 
   attr_accessor :agreement_one, :agreement_two, :agreement_three, :agreement_four, :agreement_five, :agreement_six, :agreement_seven, :agreement_eight

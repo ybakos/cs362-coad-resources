@@ -1,3 +1,4 @@
+#this just validates that there is a name and if the 
 class Region < ApplicationRecord
 
   has_many :tickets
