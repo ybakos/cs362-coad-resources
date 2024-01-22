@@ -1,6 +1,8 @@
+
 #represents users organization
 #validates information and modifies the status to either approves or denies 
 #if approved it allows you to log in if rejected you are not allowed to
+
 
 class Organization < ApplicationRecord
 
