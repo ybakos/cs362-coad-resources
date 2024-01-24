@@ -12,6 +12,6 @@ RSpec.describe User, type: :model do
     end 
 
     describe "user" do
-        it { should belong_to(:organization)}
+        it { should belong_to(:organization).optional}
     end
 end
