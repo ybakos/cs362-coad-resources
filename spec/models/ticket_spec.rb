@@ -49,4 +49,38 @@ RSpec.describe Ticket, type: :model do
     it "validates phone using phony_plausible" do
         expect(Ticket.validators_on(:phone)).to include(PhonyPlausibleValidator)
     end
+
+    describe "#open?" do 
+        it 'returns true if closed if false ' do 
+            ticket = Ticket.new
+            ticket.closed = false 
+            expect(ticket.open?).to eq(true);
+        end 
+        it 'returns false if closed if true ' do 
+            ticket = Ticket.new
+            ticket.closed = true
+            expect(ticket.open?).to eq(false);
+        end 
+    end
+ 
+    describe "#captured?" do 
+        it 'returns true if present  ' do 
+            ticket = Ticket.new
+            org= Organization.new
+            ticket.organization= org
+
+            expect(ticket.captured?).to eq(true);
+        end 
+        it 'returns false if closed if true ' do 
+            ticket = Ticket.new
+            
+            expect(ticket.captured?).to eq(false);
+        end 
+    end      
+
+    it '#to_s' do 
+        ticket= Ticket.new
+        expect("Ticket #{ticket.id}").to eq(ticket.to_s());
+    end 
+
 end

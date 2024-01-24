@@ -100,4 +100,29 @@ RSpec.describe Organization, type: :model do
     it {should validate_uniqueness_of(:name).case_insensitive()}
 
     it {should validate_length_of(:description).is_at_most(1020).on(:create)}
+
+
+    
+    it '#approved' do 
+        organization = Organization.new
+        organization.approve
+        expect(organization.status).to eq("approved")
+    end     
+    
+    it '#reject' do 
+        organization = Organization.new
+        organization.reject
+        expect(organization.status).to eq("rejected")
+    end 
+    it '#set_default_status' do 
+        organization = Organization.new
+        organization.set_default_status
+        expect(organization.status).to eq("submitted")
+    end 
+
+    it '#to_s' do 
+        organization= Organization.new
+        expect(organization.name).to eq(organization.to_s());
+    end 
+
 end

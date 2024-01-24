@@ -24,4 +24,16 @@ RSpec.describe Region, type: :model do
   it {should validate_presence_of(:name)}
   it {should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)}
   it {should validate_uniqueness_of(:name).case_insensitive()}
+
+
+  it '#unspecified' do 
+  region = Region.unspecified
+  expect(region.name).to eq("Unspecified");
+end
+
+it '#to_s' do 
+  region= Region.new
+  expect(region.name).to eq(region.to_s());
+end 
+
 end
