@@ -30,4 +30,12 @@ RSpec.describe Ticket, type: :model do
         ticket = Ticket.new
         expect(ticket).to respond_to(:description)
     end
+
+    describe "ticket" do
+        it {should belong_to(:region)}
+
+        it {should belong_to(:resource_category)}
+
+        it {should belong_to(:organization)}
+    end
 end
