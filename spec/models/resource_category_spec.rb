@@ -15,4 +15,10 @@ RSpec.describe ResourceCategory, type: :model do
         resourceCategory = ResourceCategory.new
         expect(resourceCategory).to respond_to(:name)
     end 
+
+    describe "resource_category" do
+        it {should have_and_belong_to_many(:organizations)}
+
+        it {should have_many(:tickets)}
+    end
 end
