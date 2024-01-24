@@ -1,3 +1,5 @@
+#keeps track of a users login information
+
 class User < ApplicationRecord
 
   enum role: [:admin, :organization]
