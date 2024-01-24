@@ -83,4 +83,27 @@ RSpec.describe Organization, type: :model do
 
         it {should have_and_belong_to_many(:resource_categories)}
     end
+
+    it 'to_s works' do 
+        organization= Organization.new
+        expect(organization.name).to eq(organization.to_s());
+    end 
+
+    it 'approved works' do 
+        organization = Organization.new
+        organization.approve
+        expect(organization.status).to eq("approved")
+    end     
+    
+    it 'reject works' do 
+        organization = Organization.new
+        organization.reject
+        expect(organization.status).to eq("rejected")
+    end 
+    it 'set_default_status works' do 
+        organization = Organization.new
+        organization.set_default_status
+        expect(organization.status).to eq("submitted")
+    end 
+
 end

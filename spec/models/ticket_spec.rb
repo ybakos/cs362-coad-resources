@@ -38,4 +38,10 @@ RSpec.describe Ticket, type: :model do
 
         it {should belong_to(:organization)}
     end
+    
+    it 'to_s works' do 
+        ticket= Ticket.new
+        expect("Ticket #{ticket.id}").to eq(ticket.to_s());
+    end 
+
 end
