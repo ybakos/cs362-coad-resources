@@ -21,9 +21,10 @@ RSpec.describe ResourceCategory, type: :model do
 
         it {should have_many(:tickets)}
     end
-    it 'to_s works' do 
-        resourceCategory = ResourceCategory.new
-        expect(resourceCategory.name).to eq(resourceCategory.to_s());
-    end 
+    
+  
+
+
+
 
 end

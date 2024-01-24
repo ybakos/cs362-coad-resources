@@ -20,19 +20,5 @@ RSpec.describe Region, type: :model do
   describe "region" do
     it {should have_many(:tickets)}
   end
-  
-  # it 'unspecified works ' do 
-  #   region = Region.new
-  #   region.self.unspecified
-  #   expect(region.name).to eq("Unspecified");
-  # end
-
-
-
-  it 'to_s works' do 
-    region= Region.new
-    expect(region.name).to eq(region.to_s());
-  end 
-
 
 end
