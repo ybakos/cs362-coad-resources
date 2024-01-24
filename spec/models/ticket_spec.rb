@@ -36,7 +36,7 @@ RSpec.describe Ticket, type: :model do
 
         it {should belong_to(:resource_category)}
 
-        it {should belong_to(:organization)}
+        it {should belong_to(:organization).optional}
     end
 
 
