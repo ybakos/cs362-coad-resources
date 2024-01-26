@@ -26,6 +26,12 @@ RSpec.describe ResourceCategory, type: :model do
     it {should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)}
     it {should validate_uniqueness_of(:name).case_insensitive()}
 
+
+    it '#unspecified' do 
+        esource_categories= ResourceCategory.unspecified
+        expect(resource_categories.name).to eq("Unspecified");
+    end
+
     it "#activate" do 
         resource_categories= ResourceCategory.new
         resource_categories.activate
