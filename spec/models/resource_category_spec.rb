@@ -1,19 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
+    let(:resource_category) {build(:resource_category, :name => 'first fake')}
+
     it 'has a organizations' do
-        resourceCategory = ResourceCategory.new
-        expect(resourceCategory).to respond_to(:organizations)
+        # resourceCategory = ResourceCategory.new
+        expect(resource_category).to respond_to(:organizations)
     end 
 
     it 'has a tickets' do
-        resourceCategory = ResourceCategory.new
-        expect(resourceCategory).to respond_to(:tickets)
+        # resourceCategory = ResourceCategory.new
+        expect(resource_category).to respond_to(:tickets)
     end 
 
     it 'has a name' do
-        resourceCategory = ResourceCategory.new
-        expect(resourceCategory).to respond_to(:name)
+        # resourceCategory = ResourceCategory.new
+        expect(resource_category).to respond_to(:name)
     end 
 
     describe "resource_category" do
@@ -28,39 +30,39 @@ RSpec.describe ResourceCategory, type: :model do
 
 
     it '#unspecified' do 
-        resource_categories= ResourceCategory.unspecified
-        expect(resource_categories.name).to eq("Unspecified");
+        resource_category= ResourceCategory.unspecified
+        expect(resource_category.name).to eq("Unspecified");
     end
 
     it "#activate" do 
-        resource_categories= ResourceCategory.new
-        resource_categories.activate
-        expect(resource_categories.active).to eq(true);
+        # resource_categories= ResourceCategory.new
+        resource_category.activate
+        expect(resource_category.active).to eq(true);
     end 
 
     it "#deactivate" do 
-        resource_categories= ResourceCategory.new
-        resource_categories.deactivate
-        expect(resource_categories.active).to eq(false);
+        # resource_categories= ResourceCategory.new
+        resource_category.deactivate
+        expect(resource_category.active).to eq(false);
     end 
 
     describe "#inactive?" do
         it 'returns false if active' do 
-            resource_categories= ResourceCategory.new
-            resource_categories.active=true
-            expect(resource_categories.inactive?).to eq(false);
+            # resource_categories= ResourceCategory.new
+            resource_category.active=true
+            expect(resource_category.inactive?).to eq(false);
         
         end
         it 'returns true if inactive' do 
-            resource_categories= ResourceCategory.new
-            resource_categories.active=false
-            expect(resource_categories.inactive?).to eq(true);
+            # resource_categories= ResourceCategory.new
+            resource_category.active=false
+            expect(resource_category.inactive?).to eq(true);
         end
     end
     
     it '#to_s' do 
-        resourceCategory = ResourceCategory.new
-        expect(resourceCategory.name).to eq(resourceCategory.to_s());
+        # resourceCategory = ResourceCategory.new
+        expect(resource_category.name).to eq(resource_category.to_s());
     end 
 
 end
