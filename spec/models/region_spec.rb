@@ -1,8 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Region, type: :model do
+  let(:region) {build(:region, :name => 'Mt. Hood')}
+  
+  # setup do
+      # @region2 = build(:region, :name => 'Bend')
+      # @region3 = build(:region, :name => 'KFalls')
+  # end
+
   it "has a name" do
-    region = Region.new
+    # region = build(:region)
+    # region = build(:region, :name  => "differentName")
     expect(region).to respond_to(:name)
   end
 

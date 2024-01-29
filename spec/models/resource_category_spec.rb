@@ -28,7 +28,7 @@ RSpec.describe ResourceCategory, type: :model do
 
 
     it '#unspecified' do 
-        esource_categories= ResourceCategory.unspecified
+        resource_categories= ResourceCategory.unspecified
         expect(resource_categories.name).to eq("Unspecified");
     end
 
