@@ -4,17 +4,17 @@ RSpec.describe ResourceCategory, type: :model do
     let(:resource_category) {build(:resource_category, :name => 'first fake')}
 
     it 'has a organizations' do
-        # resourceCategory = ResourceCategory.new
+       
         expect(resource_category).to respond_to(:organizations)
     end 
 
     it 'has a tickets' do
-        # resourceCategory = ResourceCategory.new
+        
         expect(resource_category).to respond_to(:tickets)
     end 
 
     it 'has a name' do
-        # resourceCategory = ResourceCategory.new
+        
         expect(resource_category).to respond_to(:name)
     end 
 
@@ -35,33 +35,33 @@ RSpec.describe ResourceCategory, type: :model do
     end
 
     it "#activate" do 
-        # resource_categories= ResourceCategory.new
+       
         resource_category.activate
         expect(resource_category.active).to eq(true);
     end 
 
     it "#deactivate" do 
-        # resource_categories= ResourceCategory.new
+      
         resource_category.deactivate
         expect(resource_category.active).to eq(false);
     end 
 
     describe "#inactive?" do
         it 'returns false if active' do 
-            # resource_categories= ResourceCategory.new
+            
             resource_category.active=true
             expect(resource_category.inactive?).to eq(false);
         
         end
         it 'returns true if inactive' do 
-            # resource_categories= ResourceCategory.new
+            
             resource_category.active=false
             expect(resource_category.inactive?).to eq(true);
         end
     end
     
     it '#to_s' do 
-        # resourceCategory = ResourceCategory.new
+       
         expect(resource_category.name).to eq(resource_category.to_s());
     end 
 
