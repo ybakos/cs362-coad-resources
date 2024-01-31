@@ -1,6 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
+
+    let(:ticket) {build(:ticket, :name => 'Mt Hood')}
+
+    setup do
+        @ticket2 = build(:ticket)
+        # pp @ticket2.to_s
+        @ticket3 = build(:ticket)
+        # pp @ticket3.to_s
+    end
+
+    #changes above. Not added, not committed, not pushed. 
+
     it 'has a region' do
         ticket = Ticket.new
         expect(ticket).to respond_to(:region)
@@ -46,6 +58,13 @@ RSpec.describe Ticket, type: :model do
 
     it {should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)}
     it {should validate_length_of(:description).is_at_most(1020).on(:create)}
+
+    describe "validates phone numbers" do
+        it {should allow_value("+1-555-555-1212").for(:phone)}
+        it {should_not allow_value("popcorn").for(:phone)}
+    end
+
+
     it "validates phone using phony_plausible" do
         expect(Ticket.validators_on(:phone)).to include(PhonyPlausibleValidator)
     end
