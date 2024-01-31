@@ -15,13 +15,13 @@ RSpec.describe Region, type: :model do
   end
 
   it 'has a tickets' do
-    region = Region.new
+    # region = Region.new
     expect(region).to respond_to(:tickets)
   end
 
   it "has a string representation that is its name" do
     name = 'Mt. Hood'
-    region = Region.new(name: name)
+    # region = Region.new(name: name)
     result = region.to_s
   end
 
@@ -40,7 +40,7 @@ RSpec.describe Region, type: :model do
 end
 
 it '#to_s' do 
-  region= Region.new
+  # region= Region.new
   expect(region.name).to eq(region.to_s());
 end 
 
