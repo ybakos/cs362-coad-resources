@@ -4,7 +4,6 @@ FactoryBot.define do
         "fake_name_#{n}"
     end
 
-<<<<<<< HEAD
     sequence :email do |n|
         "fake_email_#{n}@somewhere.com"
     end
@@ -17,7 +16,4 @@ FactoryBot.define do
         "secondary_name_#{n}"
     end
 
-=======
-    
->>>>>>> a33405924728bbf4e90aa34da499084ae12252e1
 end
