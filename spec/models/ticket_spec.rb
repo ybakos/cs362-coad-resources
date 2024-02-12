@@ -100,6 +100,9 @@ RSpec.describe Ticket, type: :model do
     it '#to_s' do 
         ticket= Ticket.new
         expect("Ticket #{ticket.id}").to eq(ticket.to_s());
-    end 
+    end
+    
+    
+    
 
 end
