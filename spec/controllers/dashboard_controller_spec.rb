@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe DashboardController, type: :controller do
-<<<<<<< HEAD
-
-end
-
-
-# A typical controller has seven methods: index, show, new, create, edit, update and destro
-=======
   describe "GET #index while logged in" do
     let(:user) { create(:user) }
 
@@ -29,4 +22,3 @@ end
   end
 
 end
->>>>>>> master
